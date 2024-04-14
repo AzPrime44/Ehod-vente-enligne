@@ -49,7 +49,7 @@ namespace EhodBoutiqueEnLigne.Models.Services
         {
             context.Response.Cookies.Append(
                 CookieRequestCultureProvider.DefaultCookieName,
-                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture("ar")));
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)));
         }
     }
 }
