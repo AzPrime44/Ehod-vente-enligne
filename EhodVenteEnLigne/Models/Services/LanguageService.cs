@@ -31,6 +31,9 @@ namespace EhodBoutiqueEnLigne.Models.Services
                 case ("Spanish"):
                     culture = "es";
                     break;
+                case ("Arabic"):
+                    culture = "ar";
+                    break;
                 default:
                     culture = "en";
                     break;
@@ -46,7 +49,7 @@ namespace EhodBoutiqueEnLigne.Models.Services
         {
             context.Response.Cookies.Append(
                 CookieRequestCultureProvider.DefaultCookieName,
-                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)));
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture("ar")));
         }
     }
 }

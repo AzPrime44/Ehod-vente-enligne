@@ -122,13 +122,37 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0,
       Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LanguageEnglish" xml:space="preserve">
-    <value>Anglais</value>
+  <data name="Address" xml:space="preserve">
+    <value>العنوان</value>
   </data>
-  <data name="LanguageFrench" xml:space="preserve">
-    <value>Français</value>
+  <data name="City" xml:space="preserve">
+      <value>المدينة</value>
   </data>
-  <data name="LanguageArabic" xml:space="preserve">
-    <value>Arabe</value>
-</data>
+  <data name="CompleteOrder" xml:space="preserve">
+      <value>اكمال الطلب</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+      <value>البلد</value>
+  </data>
+  <data name="EnterDetails" xml:space="preserve">
+      <value>يرجى إدخال تفاصيلك ، وسنقوم بشحن سلعك على الفور!</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+      <value>الموقع</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+      <value>الاسم</value>
+  </data>
+  <data name="OrderTitle" xml:space="preserve">
+      <value>يرجى التحقق</value>
+  </data>
+  <data name="ShipSoon" xml:space="preserve">
+      <value>سنقوم بشحن سلعك في أقرب وقت ممكن.</value>
+  </data>
+  <data name="ShipTo" xml:space="preserve">
+      <value>الشحن إلى</value>
+  </data>
+  <data name="Zip" xml:space="preserve">
+      <value>الرمز البريدي</value>
+  </data>
 </root>
