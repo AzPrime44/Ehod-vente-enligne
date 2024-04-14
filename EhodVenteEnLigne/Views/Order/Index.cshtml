@@ -1,0 +1,72 @@
+﻿@model EhodBoutiqueEnLigne.Models.ViewModels.OrderViewModel
+@using Microsoft.AspNetCore.Mvc.ModelBinding;
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@{
+    var modelState = ViewData["modelState"] as ModelStateDictionary;
+    var missingName = modelState?["Name"].Errors.FirstOrDefault()?.ErrorMessage;
+    var missingAddress = modelState?["Address"].Errors.FirstOrDefault()?.ErrorMessage;
+    var missingCity = modelState?["City"].Errors.FirstOrDefault()?.ErrorMessage;
+    var missingZip = modelState?["Zip"].Errors.FirstOrDefault()?.ErrorMessage;
+    var missingCountry = modelState?["Country"].Errors.FirstOrDefault()?.ErrorMessage;
+
+}
+
+<h2>@Localizer["OrderTitle"]</h2>
+<form asp-action="Index" method="post">
+    <h3>@Localizer["ShipTo"]</h3>
+    <div class="mb-3">
+        <label>@Localizer["Name"]*:</label><input asp-for="Name" class="form-control" />         
+    @if (missingName != null)
+    {
+        <div class="text-danger">
+            <p>@Localizer[missingName]</p>
+        </div>
+    }
+    </div>
+
+    <h3>@Localizer["Address"]</h3>
+    <div class="mb-3">
+        <label>@Localizer["Location"]*:</label><input asp-for="Address" class="form-control" />
+        @if (missingAddress != null)
+        {
+            <div class="text-danger">
+                <p>@Localizer[missingAddress]</p>
+            </div>
+        }
+    </div>
+    <div class="row mb-3">
+        <div class="col-4">
+            <label>@Localizer["City"]*:</label><input asp-for="City" class="form-control" />
+            @if (missingCity != null)
+            {
+                <div class="text-danger">
+                    <p>@Localizer[missingCity]</p>
+                </div>
+            }
+        </div>
+        
+        <div class="col-4">
+            <label>@Localizer["Zip"]*:</label><input asp-for="Zip" class="form-control" />
+            @if (missingZip != null)
+             {
+                <div class="text-danger">
+                    <p>@Localizer[missingZip]</p>
+                </div>
+            }
+    
+        </div>
+        <div class="col-4">
+            <label>@Localizer["Country"]*:</label><input asp-for="Country" class="form-control" />
+            @if (missingCountry != null)
+            {
+                <div class="text-danger">
+                    <p>@Localizer[missingCountry]</p>
+                </div>
+            }
+         </div>
+    </div>
+    <div class="text-center">
+        <input class="btn btn-primary" type="submit" value="@Localizer["CompleteOrder"]" />
+    </div>
+</form>

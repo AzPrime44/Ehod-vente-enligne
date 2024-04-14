@@ -1,0 +1,36 @@
+﻿@model EhodBoutiqueEnLigne.Models.ViewModels.LoginModel
+@using Microsoft.AspNetCore.Mvc.ModelBinding;
+@using Microsoft.AspNetCore.Mvc.Localization
+@{
+
+    var modelState = ViewData["modelState"] as ModelStateDictionary;
+
+    var incorrecteCredentiel = modelState?["login"].Errors.FirstOrDefault()?.ErrorMessage;
+    ViewBag.Title = "Log In";
+    Layout = "_AdminLayout";
+
+}
+
+
+<form asp-action="Login" asp-controller="Account" method="post">
+    <input type="hidden" asp-for="ReturnUrl" />
+    <div class="mb-3">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <div><span asp-validation-for="Name" class="text-danger"></span></div>       
+    </div>
+    <div class="mb-3">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control" />
+        <div><span asp-validation-for="Password" class="text-danger"></span></div>       
+    </div>
+    @if (incorrecteCredentiel != null)
+    {
+        
+    <div class="d-flex justify-content-around">
+            <p class=" text-danger">@Localizer[incorrecteCredentiel]</p>
+    </div>
+    }
+    <button class="btn btn-primary" type="submit">Log In</button>
+</form>
+
