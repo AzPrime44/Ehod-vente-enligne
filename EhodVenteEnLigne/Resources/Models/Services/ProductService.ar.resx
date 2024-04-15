@@ -122,13 +122,26 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0,
       Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LanguageEnglish" xml:space="preserve">
-    <value>Anglais</value>
-  </data>
-  <data name="LanguageFrench" xml:space="preserve">
-    <value>Français</value>
-  </data>
-  <data name="LanguageArabic" xml:space="preserve">
-    <value>Arabe</value>
+  <data name="MissingName" xml:space="preserve">
+    <value>يرجى إدخال اسم</value>
 </data>
+  <data name="MissingPrice" xml:space="preserve">
+    <value>يرجى إدخال السعر</value>
+</data>
+  <data name="MissingStock" xml:space="preserve">
+    <value>يرجى إدخال قيمة المخزون</value>
+</data>
+  <data name="PriceNotANumber" xml:space="preserve">
+    <value>يجب أن تكون القيمة المدخلة للسعر رقمًا</value>
+</data>
+  <data name="PriceNotGreaterThanZero" xml:space="preserve">
+    <value>يجب أن يكون السعر أكبر من الصفر</value>
+</data>
+  <data name="StockNotAnInteger" xml:space="preserve">
+    <value>يجب أن تكون القيمة المدخلة للمخزون عددًا صحيحًا</value>
+</data>
+  <data name="StockNotGreaterThanZero" xml:space="preserve">
+    <value>يجب أن يكون المخزون أكبر من الصفر</value>
+</data>
+
 </root>
