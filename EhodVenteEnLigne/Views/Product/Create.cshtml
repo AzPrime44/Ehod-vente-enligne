@@ -1,22 +1,77 @@
 ﻿@model EhodBoutiqueEnLigne.Models.ViewModels.ProductViewModel
+@using Microsoft.AspNetCore.Mvc.ModelBinding;
+@using Microsoft.AspNetCore.Mvc.Localization;
+@using Microsoft.AspNetCore.Authorization;
+@using Microsoft.AspNetCore.Mvc;
+@using EhodBoutiqueEnLigne.Models.Services;
+@using EhodBoutiqueEnLigne.Models.ViewModels;
+@using System.Collections.Generic;
+@using System.Linq;
+@using Microsoft.Extensions.Localization;
+
 @{
+    var errors = ViewData["errors"] as Dictionary<string, string>;
+    var missingName = errors.TryGetValue("MissingName", out string missingNameValue) ? missingNameValue : null;
+    var missingPrice = errors.TryGetValue("MissingPrice", out string missingPriceValue) ? missingPriceValue : null;
+    var priceNotANumber = errors.TryGetValue("PriceNotANumber", out string priceNotANumberValue) ? priceNotANumberValue : null;
+    var priceNotGreaterThanZero = errors.TryGetValue("PriceNotGreaterThanZero", out string priceNotGreaterThanZeroValue) ? priceNotGreaterThanZeroValue : null;
+    var missingQuantity = errors.TryGetValue("MissingQuantity", out string missingQuantityValue) ? missingQuantityValue : null;
+    var stockNotAnInteger = errors.TryGetValue("StockNotAnInteger", out string stockNotAnIntegerValue) ? stockNotAnIntegerValue : null;
+    var stockNotGreaterThanZero = errors.TryGetValue("StockNotGreaterThanZero", out string stockNotGreaterThanZeroValue) ? stockNotGreaterThanZeroValue : null;
     ViewData["Title"] = Localizer["CreatProductTitle"];
+
     Layout = "_AdminLayout";
+
 }
 
-<div asp-validation-summary="All" class="text-danger"></div>
 <form asp-action="Create" method="post">
     <div class="mb-3 col-6">
         <label>@Localizer["Name"]*:</label><input asp-for="Name" class="form-control" />
+        @if (missingName != null)
+            {
+                <div class="d-flex justify-content-around">
+                <p class=" text-danger">@Localizer[missingName]</p>
+                </div>
+            }
     </div>
     <div class="mb-3 col-4">
         <label>@Localizer["Price"]*:</label><input asp-for="Price" class="form-control" />
+        @if (missingPrice != null)
+        {
+            <div class="d-flex justify-content-around">
+                <p class=" text-danger">@Localizer[missingPrice]</p>
+            </div>
+        }
+        else if (priceNotANumber != null)
+        {
+            <div class="d-flex justify-content-around">
+                <p class=" text-danger">@Localizer[priceNotANumber]</p>
+            </div>
+        }
+        else if (priceNotGreaterThanZero != null)
+        {
+            <div class="d-flex justify-content-around">
+                <p class=" text-danger">@Localizer[priceNotGreaterThanZero]</p>
+            </div>
+        }
     </div>
     <div class="mb-3 col-8">
         <label>@Localizer["Description"]:</label><input asp-for="Description" class="form-control" />
     </div>
     <div class="mb-3 col-4">
         <label>@Localizer["Stock"]*:</label><input asp-for="Stock" type="text" class="form-control" />
+        @if (stockNotAnInteger != null)
+        {
+            <div class="d-flex justify-content-around">
+                <p class=" text-danger">@Localizer[stockNotAnInteger]</p>
+            </div>
+        }
+        @if (stockNotGreaterThanZero != null)
+        {
+            <div class="d-flex justify-content-around">
+                <p class=" text-danger">@Localizer[stockNotGreaterThanZero]</p>
+            </div>
+        }
     </div>
     <div class="mb-3col-8">
         <label>@Localizer["Details"]:</label><input asp-for="Details" class="form-control" />

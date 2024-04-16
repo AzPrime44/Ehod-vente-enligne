@@ -155,4 +155,19 @@
   <data name="Zip" xml:space="preserve">
       <value>الرمز البريدي</value>
   </data>
+  <data name="ErrorMissingAddress" xml:space="preserve">
+    <value>يرجى إدخال عنوان</value>
+</data>
+  <data name="ErrorMissingCity" xml:space="preserve">
+    <value>يرجى إدخال اسم المدينة</value>
+</data>
+  <data name="ErrorMissingCountry" xml:space="preserve">
+    <value>يرجى إدخال اسم البلد</value>
+</data>
+  <data name="ErrorMissingName" xml:space="preserve">
+    <value>يرجى إدخال اسم</value>
+</data>
+  <data name="ErrorMissingZipCode" xml:space="preserve">
+    <value>يرجى إدخال الرمز البريدي</value>
+</data>
 </root>
