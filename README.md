@@ -14,3 +14,7 @@ nous nous sommes interresse a la gestion des erreurs lors du remplicage du formu
 Dans cette version de l'application nous avons ajouter les fichiers de langues pour la langue arabe et ajoute cette derniere comme une option.
 
 ![alt text](<capture de la page commande aevc la langue arabe.png>)
+
+########################################
+
+Dans notre 3em increment nous nous sommes pencher sur la correction des bogues des increment precedent et l'implementation des testes unitaire pour teste les services de l'application
