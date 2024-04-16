@@ -4,6 +4,8 @@ using EhodBoutiqueEnLigne.Models.Services;
 using EhodBoutiqueEnLigne.Models.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Extensions.Localization;
+using System;
 
 namespace EhodBoutiqueEnLigne.Controllers
 {
@@ -11,11 +13,13 @@ namespace EhodBoutiqueEnLigne.Controllers
     {
         private readonly IProductService _productService;
         private readonly ILanguageService _languageService;
+        private readonly IStringLocalizer<ProductService> _localizer;
 
-        public ProductController(IProductService productService, ILanguageService languageService)
+        public ProductController(IProductService productService, ILanguageService languageService, IStringLocalizer<ProductService> localizer)
         {
             _productService = productService;
             _languageService = languageService;
+            _localizer = localizer;
         }
 
         public IActionResult Index()
@@ -40,11 +44,14 @@ namespace EhodBoutiqueEnLigne.Controllers
         [HttpPost]
         public IActionResult Create(ProductViewModel product)
         {
-            List<string> modelErrors = _productService.CheckProductModelErrors(product);           
+            List<string> modelErrors = _productService.CheckProductModelErrors(product);
+            Dictionary<string, string> errorDictionary = new Dictionary<string, string>();
 
             foreach (string error in modelErrors)
             {
-                ModelState.AddModelError("", error);
+                ModelState.AddModelError(error, _localizer[error]);
+                errorDictionary.Add(error,error);
+                
             }
 
             if (ModelState.IsValid)
@@ -54,6 +61,7 @@ namespace EhodBoutiqueEnLigne.Controllers
             }
             else
             {
+                ViewData["errors"] = errorDictionary;
                 return View(product);
             }
         }
